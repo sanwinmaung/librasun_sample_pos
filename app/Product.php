@@ -7,6 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-    	'code', 'name', 'price', 'quantity', 'status',
+    	'code', 'slug', 'name', 'price', 'quantity', 'photo', 'status',
     ];
+    
+    public function getRouteKeyName()
+	{
+		return 'slug';
+	}
+
+	public function selltemp()
+	{
+		return $this->hasMany(SellTemp::class);
+	}
+	
 }

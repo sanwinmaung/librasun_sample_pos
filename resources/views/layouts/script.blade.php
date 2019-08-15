@@ -7,3 +7,4 @@
 <script src="{{ asset('admin_theme/js/todolist.js') }}"></script>
 <script src="{{ asset('admin_theme/js/dashboard.js') }}"></script>
 <script src="{{ asset('admin_theme/js/todolist.js') }}"></script>
+<script src="{{ asset('admin_theme/js/data-table.js') }}"></script>

@@ -15,7 +15,7 @@
     <!-- partial:partials/_horizontal-navbar.html -->
     <div class="horizontal-menu">
       @include('layouts.nav-top')
-      @include('layouts.nav-bottom')
+      @yield('nav')
     </div>
 
     <!-- partial -->
@@ -92,6 +92,7 @@
     </div>
   </div>
   @include('layouts.script')
+  @stack('script')
 
 </body>
 </html>

@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Shift;
 use App\Cashier;
+use App\Product;
+use App\Set;
 use Session;
+use DataTables;
 
 class PosController extends Controller
 {
@@ -18,6 +21,8 @@ class PosController extends Controller
 			$shifts = Shift::all();
 			return view('shift', compact('shifts'));
 		}
-		return view('pos.index');
+		$products = Product::all();
+		$sets = Set::all();
+		return view('pos.index', compact('products', 'sets'));
 	}
 }

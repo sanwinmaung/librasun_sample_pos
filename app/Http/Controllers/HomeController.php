@@ -12,16 +12,16 @@ use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
+    public function testing($slug)
+    {
+        // return $item = Product::where('slug', $slug)->first();
+    }
+
     public function index()
     {
     	return view('home');
     }
 
-    // public function shift()
-    // {
-    // 	$shifts = Shift::all();
-    // 	return view('shift', compact('shifts'));
-    // }
     public function killSession()
     {
     	Session::flush();
@@ -39,8 +39,8 @@ class HomeController extends Controller
     {
     	Session::put('cashierId', $id);
 
-    	$products = Product::all();
+        $products = Product::all();
     	$sets = Set::all();
-    	return view('pos.index');
+    	return view('pos.index', compact('products', 'sets'));
     }
 }
