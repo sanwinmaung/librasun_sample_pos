@@ -7,6 +7,7 @@ use App\Shift;
 use App\Cashier;
 use App\Product;
 use App\Set;
+use App\SellTemp;
 use Session;
 use DataTables;
 
@@ -21,6 +22,7 @@ class PosController extends Controller
 			$shifts = Shift::all();
 			return view('shift', compact('shifts'));
 		}
+		SellTemp::where('shift_id', $shiftId)->delete();
 		$products = Product::all();
 		$sets = Set::all();
 		return view('pos.index', compact('products', 'sets'));

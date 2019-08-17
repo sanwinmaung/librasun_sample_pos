@@ -16,7 +16,7 @@
 									<nav>
 										<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
 											<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-products" role="tab" aria-controls="nav-home" aria-selected="true">Products</a>
-											<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-sets" role="tab" aria-controls="nav-profile" aria-selected="false">Sets</a>
+											<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-sets" role="tab" aria-controls="nav-profile" aria-selected="false">Sets Menu</a>
 										</div>
 									</nav>
 									<div class="tab-content" id="nav-tabContent">
@@ -47,52 +47,31 @@
 													</div>
 												</div>
 											</div>
-											{{-- <table class="table table-bordered products-table" cellspacing="0">
+										</div>
+
+										<div class="tab-pane fade" id="nav-sets" role="tabpanel" aria-labelledby="nav-profile-tab">
+											<table id="order-listing" class="table table-bordered set-products-table">
 												<thead>
 													<tr>
 														<th>Code</th>
+														<th>Item One</th>
+														<th>Item Two</th>
 														<th>Name</th>
 														<th>Price</th>
 														<th>Add</th>
 													</tr>
 												</thead>
 												<tbody>
-													@foreach ($products as $product)
+													@foreach ($sets as $set)
 													<tr>
-														<td style="color: #0acf97">{{ $product->code }}</td>
-														<td>{{ $product->name }}</td>
-														<td>{{ $product->price }}</td>
+														<td style="color: #0062cc;font-weight: bold;">{{ $set->code }}</td>
+														<td>{{ $set->productone->name }}</td>
+														<td>{{ $set->producttwo->name }}</td>
+														<td>{{ $set->name }}</td>
+														<td>{{ $set->price }}</td>
 														<td><a class="btn btn-success add-product" style="color: #ffffff;padding: 6px;" id="add-product">Add</a></td>
 													</tr>
 													@endforeach
-												</tbody>
-											</table> --}}
-										</div>
-										<div class="tab-pane fade" id="nav-sets" role="tabpanel" aria-labelledby="nav-profile-tab">
-											<table class="table" cellspacing="0">
-												<thead>
-													<tr>
-														<th>Project Name</th>
-														<th>Employer</th>
-														<th>Time</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td><a href="#">Work 1</a></td>
-														<td>Doe</td>
-														<td>john@example.com</td>
-													</tr>
-													<tr>
-														<td><a href="#">Work 2</a></td>
-														<td>Moe</td>
-														<td>mary@example.com</td>
-													</tr>
-													<tr>
-														<td><a href="#">Work 3</a></td>
-														<td>Dooley</td>
-														<td>july@example.com</td>
-													</tr>
 												</tbody>
 											</table>
 										</div>

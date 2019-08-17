@@ -1,8 +1,10 @@
 <nav class="navbar top-navbar col-lg-12 col-12 p-0">
   <div class="container">
     <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-      <a class="navbar-brand brand-logo" href="/"><img src="{{ asset('admin_theme/images/logo-white.svg') }}" alt="logo"/></a>
-      <a class="navbar-brand brand-logo-mini" href="/"><img src="{{ asset('admin_theme/images/logo-mini.svg') }}" alt="logo"/></a>
+      {{-- <a class="navbar-brand brand-logo" href="/"><img src="{{ asset('admin_theme/images/logo-white.svg') }}" alt="logo"/></a> --}}
+      {{-- <a class="navbar-brand brand-logo-mini" href="/"><img src="{{ asset('admin_theme/images/logo-mini.svg') }}" alt="logo"/></a> --}}
+      <a class="navbar-brand brand-logo" href="/"><h2 style="color: #fff;">Librasun Test</h2></a>
+      <a class="navbar-brand brand-logo-mini" href="/"><h4 style="color: #fff;">Librasun Test</h4></a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end justify-content-lg-start">
       <ul class="navbar-nav mr-lg-2">
@@ -10,10 +12,10 @@
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text" id="search">
-                <i class="mdi mdi-magnify"></i>
+                <i class="fa fa-home"></i> <span style="margin-left: 10px;"> Current Shift No : <strong>{{ session('shiftId') }}</strong></span>
               </span>
             </div>
-            <input type="text" class="form-control" placeholder="search" aria-label="search" aria-describedby="search">
+            
           </div>
         </li>
       </ul>
@@ -73,21 +75,32 @@
             </a>
           </div>
         </li>
+        @php
+          $shift = App\Shift::find(session('shiftId'));
+          $cashier = App\Cashier::find(session('cashierId'));
+        @endphp
         <li class="nav-item nav-profile dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
             <img src="{{ asset('admin_theme/images/faces/face5.jpg') }}" alt="profile"/>
-            <span class="nav-profile-name">Evan Morales</span>
+            <span class="nav-profile-name">@if(!is_null($cashier)) {{ $cashier->fullname }} @else Enter POS @endif</span>
           </a>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-            <a class="dropdown-item">
-              <i class="mdi mdi-settings text-primary"></i>
-              Settings
-            </a>
+            {{-- <a class="dropdown-item">
+              <i class="fa fa-shop"></i>
+              @if(!is_null($shift)) Shift {{ $shift->name }} @else No Shift @endif
+            </a> --}}
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item">
+            @if(!is_null($shift))
+            <a class="dropdown-item" href="{{ route('kill.session') }}">
               <i class="mdi mdi-logout text-primary"></i>
-              Logout
+              Logout Shift {{ $shift->name }}
             </a>
+            @else
+            <a class="dropdown-item" href="{{ route('pos.index') }}">
+              <i class="mdi mdi-logout text-primary"></i>
+              Enter POS
+            </a>
+            @endif
           </div>
         </li>
       </ul>

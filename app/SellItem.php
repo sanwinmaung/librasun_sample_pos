@@ -4,11 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SellTemp extends Model
+class SellItem extends Model
 {
     protected $fillable = [
-    	'shift_id', 'product_id', 'set_id', 'product_qty', 'total_cost',
+    	'sell_id', 'product_id', 'set_id', 'product_qty', 'total_cost',
     ];
+
+    public function sell()
+    {
+    	return $this->belongsTo(Sell::class);
+    }
 
     public function product()
     {
@@ -17,7 +22,6 @@ class SellTemp extends Model
 
     public function set()
     {
-    	return $this->belongsTo(Set::class);
+        return $this->belongsTo(Set::class);
     }
-
 }

@@ -7,6 +7,7 @@ use App\Shift;
 use App\Cashier;
 use App\Product;
 use App\Set;
+use App\SellTemp;
 use Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -38,7 +39,8 @@ class HomeController extends Controller
     public function cashier($id)
     {
     	Session::put('cashierId', $id);
-
+        $shiftId = session('shiftId');
+        SellTemp::where('shift_id', $shiftId)->delete();
         $products = Product::all();
     	$sets = Set::all();
     	return view('pos.index', compact('products', 'sets'));

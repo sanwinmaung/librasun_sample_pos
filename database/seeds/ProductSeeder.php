@@ -18,7 +18,6 @@ class ProductSeeder extends Seeder
         	'name'			=> 'Espresso',
         	'price'			=> 4.00,
         	'quantity'		=> 30,
-            // 'photo'         => ''
         	'status'		=> true,
         ]);
 
@@ -37,6 +36,7 @@ class ProductSeeder extends Seeder
         	'name'			=> 'Hazelnut Latte',
         	'price'			=> 4.00,
         	'quantity'		=> 19,
+            'extra_id'      => 1,
         	'status'		=> true,
         ]);
 
@@ -46,6 +46,7 @@ class ProductSeeder extends Seeder
         	'name'			=> 'Cappuccino',
         	'price'			=> 4.00,
         	'quantity'		=> 25,
+            'extra_id'      => 2,
         	'status'		=> true,
         ]);
 

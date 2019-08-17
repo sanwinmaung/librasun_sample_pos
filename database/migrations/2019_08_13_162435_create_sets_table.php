@@ -15,9 +15,11 @@ class CreateSetsTable extends Migration
     {
         Schema::create('sets', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('code')->unique();
+            $table->string('slug')->unique();
             $table->integer('first_product_id');
             $table->integer('second_product_id');
-            $table->string('set_name')->unique();
+            $table->string('name')->unique();
             $table->decimal('price', 9, 2);
             $table->timestamps();
         });
